@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# with some help from:
+# https://stackoverflow.com/questions/42827234/bash-map-function-arguments
+
+function map
+{
+    local f="$1"
+    shift # consume first argument (map function)
+    shift # consume second argument (program to run)
+    for arg
+    do
+        "$f" "$arg" # assuming `f` prints a single line per call
+    done
+}
+
+map wslpath $(sed -e 's/^"//' -e 's/"$//' <<<"$@") | xargs $1
