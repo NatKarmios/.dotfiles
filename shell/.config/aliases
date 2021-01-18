@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 
 alias q="exit"
+alias inst="sudo apt install"
+alias upd="sudo apt update"
+alias upg="sudo apt upgrade"
 
