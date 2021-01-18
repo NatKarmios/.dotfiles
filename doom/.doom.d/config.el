@@ -55,44 +55,61 @@
 
 (setq fancy-splash-image "~/.doom.d/doom_emacs.png")
 
-; (require 'web-mode)
-; (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-; (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-; (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-; (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-; (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-; (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-; (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-; (add-to-list 'auto-mode-alist '("\\.[jt]sx?\\'" . web-mode))
-
-;(defun setup-tide-mode ()
-;  (interactive)
-;  (tide-setup)
-;  (flycheck-mode +1)
-;  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-;  (eldoc-mode +1)
-;  (tide-hl-identifier-mode +1)
-;  ;; company is an optional dependency. You have to
-;  ;; install it separately via package-install
-;  ;; `M-x package-install [ret] company`
-;  (company-mode +1))
-
-;; aligns annotation to the right hand side
-;(setq company-tooltip-align-annotations t)
-
-;; formats the buffer before saving
-;(add-hook 'before-save-hook 'tide-format-before-save)
-
 ;(add-hook 'typescript-mode-hook #'setup-tide-mode)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(js-indent-level 2))
+ '(js-indent-level 2)
+ '(package-selected-packages '(awscli-capf)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(setq org-capture-inbox-file "~/org/inbox.org")
+(after! org
+  (setq org-capture-templates
+   '(("t" "Personal todo" entry
+        (file org-capture-inbox-file)
+      "* TODO %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n%i" :prepend t)
+        ("T" "Personal todo (with link)" entry
+        (file org-capture-inbox-file)
+      "* TODO %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n%i\n%A" :prepend t)
+        ("n" "Personal notes" entry
+        (file org-capture-inbox-file)
+      "* %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n%i" :prepend t)
+        ("N" "Personal notes (with link)" entry
+        (file org-capture-inbox-file)
+      "* %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n%i\n%A" :prepend t)
+   )
+   )
+)
+
+;; Open weblinks in Windows, if on WSL
+(let ((cmd-exe "/usr/bin/wslview"))
+    (when (file-exists-p cmd-exe)
+      (setq browse-url-generic-program  cmd-exe
+            browse-url-browser-function 'browse-url-generic)))
+
+(setq org-log-done 'time)
+
+(setq vterm-shell "/usr/bin/zsh")
+
+(setq lsp-enable-symbol-highlighting t)
+(setq lsp-ui-doc-enable t)
+(setq lsp-lens-enable t)
+(setq lsp-headerline-breadcrumb-enable t)
+(setq lsp-ui-sideline-enable t)
+(setq lsp-ui-sideline-show-code-actions t)
+(setq lsp-ui-sideline-enable t)
+(setq lsp-ui-sideline-show-hover t)
+(setq lsp-modeline-code-actions-enable t)
+(setq lsp-signature-auto-activate t)
+(setq lsp-signature-render-documentation t)
+
+(add-to-list 'company-backends 'company-keywords)
+(add-to-list 'company-backends 'company-capf)

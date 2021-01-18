@@ -10,7 +10,15 @@
 ;(package! some-package)
 (package! lsp-ui)
 (package! npm-mode)
-;(package! tide)
+(package! tide)
+(package! company-mode)
+
+(package! anaconda-mode
+  :recipe (:host github :repo "dakra/anaconda-mode")
+  :pin "810163d5a65e62d58f363e2edaa3be70e6d82e25")
+
+;; doesn't work
+;(use-package! fira-code-mode :demand :config (global-fira-code-mode))
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
