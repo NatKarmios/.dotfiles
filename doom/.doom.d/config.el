@@ -30,6 +30,12 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
+;; from 'https://emacs.stackexchange.com/questions/38183/how-to-exclude-a-file-from-agenda'
+(custom-set-variables
+ '(org-agenda-custom-commands
+   '(("A" "Ignore habits"
+      ((agenda ""))
+      ((org-agenda-tag-filter-preset '("-HABIT")))))))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
