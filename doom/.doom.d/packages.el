@@ -11,7 +11,7 @@
 (package! lsp-ui)
 (package! npm-mode)
 (package! tide)
-(package! company-mode)
+(package! company)
 
 (package! anaconda-mode
   :recipe (:host github :repo "dakra/anaconda-mode")
