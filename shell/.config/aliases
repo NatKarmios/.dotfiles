@@ -4,4 +4,7 @@ alias q="exit"
 alias inst="sudo apt install"
 alias upd="sudo apt update"
 alias upg="sudo apt upgrade"
+alias e="emacs"
 
+export ALI="~/.config/aliases"
+export PATH="/home/nat/.emacs.d/bin:$PATH"
