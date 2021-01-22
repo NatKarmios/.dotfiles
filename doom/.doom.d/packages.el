@@ -12,6 +12,7 @@
 (package! npm-mode)
 (package! tide)
 (package! company)
+(package! ein)
 
 (package! anaconda-mode
   :recipe (:host github :repo "dakra/anaconda-mode")
