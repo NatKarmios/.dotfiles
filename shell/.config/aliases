@@ -5,6 +5,7 @@ alias inst="sudo apt install"
 alias upd="sudo apt update"
 alias upg="sudo apt upgrade"
 alias e="emacs"
+alias pip="pip3"
 
 if [ "$CUSTOM_VARS_SET" != "1" ]; then
   export ALI="~/.config/aliases"
