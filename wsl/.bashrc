@@ -117,7 +117,7 @@ if ! shopt -oq posix; then
 fi
 
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
-export PATH=~/code/ext/kotlin-language-server/server/build/install/server/bin:$PATH
+source ~/.config/aliases
 
 ~/.local/bin/check_interop.sh
 

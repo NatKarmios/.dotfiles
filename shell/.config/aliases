@@ -6,5 +6,10 @@ alias upd="sudo apt update"
 alias upg="sudo apt upgrade"
 alias e="emacs"
 
-export ALI="~/.config/aliases"
-export PATH="/home/nat/.emacs.d/bin:$PATH"
+if [ "$CUSTOM_VARS_SET" != "1" ]; then
+  export ALI="~/.config/aliases"
+  export PATH="~/code/ext/kotlin-language-server/server/build/install/server/bin:$PATH"
+  export PATH="/home/nat/.emacs.d/bin:$PATH"
+  export PATH="/home/nat/.local/bin:$PATH"
+  export CUSTOM_VARS_SET=1
+fi
