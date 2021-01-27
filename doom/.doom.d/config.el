@@ -33,9 +33,18 @@
 ;; from 'https://emacs.stackexchange.com/questions/38183/how-to-exclude-a-file-from-agenda'
 (custom-set-variables
  '(org-agenda-custom-commands
-   '(("A" "Ignore habits"
+   '(("A" "Nat's (week)"
       ((agenda ""))
-      ((org-agenda-tag-filter-preset '("-HABIT")))))))
+      ((org-agenda-tag-filter-preset '("-HABIT"))))
+     ("D" "Nat's (day)"
+      ((agenda ""))
+      (
+       (org-agenda-span 'day)
+       (org-agenda-start-day "-0d")
+       (org-agenda-tag-filter-preset '("-HABIT"))
+      )
+     )
+    )))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -147,3 +156,5 @@
 )
 ;; Make it active
 (ad-activate 'org-insert-heading)
+
+(setq org-agenda-skip-scheduled-if-done t)
